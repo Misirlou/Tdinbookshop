@@ -12,6 +12,7 @@ namespace Shop_Server
     {
         List<Order> orders;
         Dictionary<Title,int> stocks;
+        int id;
 
         public List<Order> getOrders()
         {
@@ -20,6 +21,7 @@ namespace Shop_Server
 
         public ShopService()
         {
+            id = 0;
             orders = new List<Order>();
             stocks = new Dictionary<Title, int>();
             int i = 0;
@@ -36,5 +38,37 @@ namespace Shop_Server
             return stocks;
         }
 
+
+
+        public void addOrder(string name, string addr, string email, int quant, Title t)
+        {
+            Order o = new Order();
+            o.email = email;
+            o.name = name;
+            o.address = addr;
+            o.quant = quant;
+            o.title = t;
+            o.id = id;
+            o.price=calcPrice(quant,t);
+            id++;
+            orders.Add(o);
+            //TODO verificar se existe stock e mandar;
+
+        }
+
+        private double calcPrice(int quant, Title t)
+        {
+            double price=0;
+            switch (t)
+            {
+                case Title.GoT: price = 1; break;
+                case Title.LotR: price = 1.5; break;
+                case Title.RemotingForDummies: price = 2; break;
+                case Title.CProgramming: price = 2.5; break;
+                case Title.AIBasicApproach: price = 3; break;
+            }
+
+            return price*quant;
+        }
     }
 }

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="03e612e6-5a76-408a-9fcd-999f1451e723" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:8733/Design_Time_Addresses/Shop_Server/ShopService/" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="item.disco" MetadataType="Disco" ID="5c0e1e1e-896f-48cd-9a18-69048d500676" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/Shop_Server/ShopService/?disco" />
+    <MetadataFile FileName="item.xsd" MetadataType="Schema" ID="e7517369-fbda-474e-8e86-2b602490fe4e" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/Shop_Server/ShopService/?xsd=xsd1" />
+    <MetadataFile FileName="item1.xsd" MetadataType="Schema" ID="8753d1b4-5d2f-4a5f-a4a8-a8fe03f467cb" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/Shop_Server/ShopService/?xsd=xsd0" />
+    <MetadataFile FileName="item2.xsd" MetadataType="Schema" ID="275e8de0-be35-4de3-b762-64c13bfc5faa" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/Shop_Server/ShopService/?xsd=xsd3" />
+    <MetadataFile FileName="item3.xsd" MetadataType="Schema" ID="101784b3-3ec8-4382-9c8b-a2575b826a49" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/Shop_Server/ShopService/?xsd=xsd2" />
+    <MetadataFile FileName="ShopService.wsdl" MetadataType="Wsdl" ID="492414fa-94c9-4368-8808-a0028794acc6" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/Shop_Server/ShopService/?wsdl" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

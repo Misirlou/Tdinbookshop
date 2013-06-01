@@ -1,4 +1,4 @@
-﻿namespace Warehouse_Server
+﻿namespace Warehouse_GUI
 {
     partial class Form1
     {

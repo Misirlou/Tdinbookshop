@@ -1,6 +1,6 @@
-﻿namespace Shop_Server
+﻿namespace Warehouse_Server
 {
-    partial class ShopServer
+    partial class WarehouseServer
     {
         /// <summary>
         /// Required designer variable.
@@ -36,9 +36,9 @@
             // 
             this.button1.Location = new System.Drawing.Point(13, 13);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(107, 23);
+            this.button1.Size = new System.Drawing.Size(93, 23);
             this.button1.TabIndex = 0;
-            this.button1.Text = "Abrir Serviço";
+            this.button1.Text = "Ligar Serviço";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -51,15 +51,15 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "Serviço Desligado";
             // 
-            // ShopServer
+            // WarehouseServer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(233, 129);
+            this.ClientSize = new System.Drawing.Size(211, 111);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button1);
-            this.Name = "ShopServer";
-            this.Text = "Shop Server";
+            this.Name = "WarehouseServer";
+            this.Text = "Warehouse Server";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ShopServer_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();

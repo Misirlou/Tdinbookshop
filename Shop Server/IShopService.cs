@@ -14,6 +14,8 @@ namespace Shop_Server
         List<Order> getOrders();
         [OperationContract]
         Dictionary<Title,int> getStocks();
+        [OperationContract]
+        void addOrder(string name,string addr,string email,int quant,Title t);
     }
 
 

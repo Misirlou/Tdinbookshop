@@ -10,8 +10,10 @@ namespace Warehouse_Server
     // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "WarehouseService" in both code and config file together.
     public class WarehouseService : IWarehouseService
     {
-        public void DoWork()
+
+        public Dictionary<Title, int> getShopRequests()
         {
+            throw new NotImplementedException();
         }
     }
 }
