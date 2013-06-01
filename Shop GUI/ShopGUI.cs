@@ -26,5 +26,22 @@ namespace Shop_GUI
             proxy.Close();
 
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            List<Order> orders=proxy.getOrders();
+            Orders.Items.Clear();
+            foreach(Order order in orders)
+            {
+                Orders.Items.Add(order.id + " " + Enum.GetName(typeof(Title),order.title) + " " + order.quant );
+            }
+
+            Dictionary<Title,int> stocks=proxy.getStocks();
+            Stock.Items.Clear();
+            foreach (Title t in stocks.Keys)
+            {
+                Stock.Items.Add(Enum.GetName(typeof(Title),t)+" "+stocks[t]);
+            }
+        }
     }
 }

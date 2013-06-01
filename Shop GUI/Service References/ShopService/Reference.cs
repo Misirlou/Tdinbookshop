@@ -241,10 +241,10 @@ namespace Shop_GUI.ShopService {
     public interface IShopService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IShopService/getOrders", ReplyAction="http://tempuri.org/IShopService/getOrdersResponse")]
-        Shop_GUI.ShopService.Order[] getOrders();
+        System.Collections.Generic.List<Shop_GUI.ShopService.Order> getOrders();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IShopService/getOrders", ReplyAction="http://tempuri.org/IShopService/getOrdersResponse")]
-        System.Threading.Tasks.Task<Shop_GUI.ShopService.Order[]> getOrdersAsync();
+        System.Threading.Tasks.Task<System.Collections.Generic.List<Shop_GUI.ShopService.Order>> getOrdersAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IShopService/getStocks", ReplyAction="http://tempuri.org/IShopService/getStocksResponse")]
         System.Collections.Generic.Dictionary<Shop_GUI.ShopService.Title, int> getStocks();
@@ -310,11 +310,11 @@ namespace Shop_GUI.ShopService {
                 base(binding, remoteAddress) {
         }
         
-        public Shop_GUI.ShopService.Order[] getOrders() {
+        public System.Collections.Generic.List<Shop_GUI.ShopService.Order> getOrders() {
             return base.Channel.getOrders();
         }
         
-        public System.Threading.Tasks.Task<Shop_GUI.ShopService.Order[]> getOrdersAsync() {
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<Shop_GUI.ShopService.Order>> getOrdersAsync() {
             return base.Channel.getOrdersAsync();
         }
         

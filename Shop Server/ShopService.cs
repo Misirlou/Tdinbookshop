@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net;
+using System.Net.Mail;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.ServiceModel;
@@ -24,8 +26,7 @@ namespace Shop_Server
 
         public ShopService()
         {
-            id = 0;
-            int i = 0;
+            id = 1;
             try
             {
                 Stream stream = File.Open("orders.bin", FileMode.Open);
@@ -51,6 +52,7 @@ namespace Shop_Server
             catch
             {
 
+                int i = 0;
                 stocks = new Dictionary<Title, int>();
                 foreach (Title title in Enum.GetValues(typeof(Title)))
                 {
@@ -117,7 +119,29 @@ namespace Shop_Server
 
         private void sendEmail(Order o)
         {
-            //TODO
+            var fromAddress = new MailAddress("diogotbasto@gmail.com", "From Name");
+            var toAddress = new MailAddress(o.email, "To Name");
+            const string fromPassword = "lololol";
+            const string subject = "Book Order";
+            string body = "Your order for "+o.quant.ToString()+" "+System.Enum.GetName(typeof(Title),o.title)+" is supposed to arrive at "+o.date.ToShortDateString();
+
+            var smtp = new SmtpClient
+            {
+                Host = "smtp.gmail.com",
+                Port = 587,
+                EnableSsl = true,
+                DeliveryMethod = SmtpDeliveryMethod.Network,
+                UseDefaultCredentials = false,
+                Credentials = new NetworkCredential(fromAddress.Address, fromPassword)
+            };
+            using (var message = new MailMessage(fromAddress, toAddress)
+            {
+                Subject = subject,
+                Body = body
+            })
+            {
+                smtp.Send(message);
+            }
         }
 
         private double calcPrice(int quant, Title t)

@@ -28,7 +28,7 @@ namespace Shop_Server
 
     
 
-
+    [Serializable]
     [DataContract]
     public class Order
     {
@@ -50,7 +50,7 @@ namespace Shop_Server
         public OrderState state;
         [DataMember]
         public DateTime date;
-        [DataMember]
+        /*[DataMember]
         public string stateStr
         {
             get
@@ -67,7 +67,7 @@ namespace Shop_Server
                 }
                 return s;
             }
-        }
+        }*/
     }
 
     [DataContract(Name = "Title")]
