@@ -80,24 +80,24 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="Service References\ShopService\item.xsd">
+    <None Include="Service References\ShopService\Arrays.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\ShopService\item1.xsd">
+    <None Include="Service References\ShopService\service.wsdl" />
+    <None Include="Service References\ShopService\service.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\ShopService\item2.xsd">
+    <None Include="Service References\ShopService\service1.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\ShopService\item3.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\ShopService\ShopService.wsdl" />
     <None Include="Service References\ShopService\Shop_GUI.ShopService.Order.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\ShopService\Shop_GUI.ShopService.Title.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ShopService\Shop_Server.xsd">
+      <SubType>Designer</SubType>
     </None>
   </ItemGroup>
   <ItemGroup>
@@ -108,9 +108,6 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\ShopService\" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\ShopService\item.disco" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\ShopService\configuration91.svcinfo" />

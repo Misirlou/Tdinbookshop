@@ -1,13 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Runtime.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.ServiceModel;
 using System.Text;
 
 namespace Shop_Server
 {
     // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "ShopService" in both code and config file together.
+    [ServiceBehavior(InstanceContextMode = InstanceContextMode.Single)]
     public class ShopService : IShopService
     {
         List<Order> orders;
@@ -22,13 +25,54 @@ namespace Shop_Server
         public ShopService()
         {
             id = 0;
-            orders = new List<Order>();
-            stocks = new Dictionary<Title, int>();
             int i = 0;
-            foreach (Title title in Enum.GetValues(typeof(Title)))
+            try
             {
-                stocks.Add(title, i);
-                i++;
+                Stream stream = File.Open("orders.bin", FileMode.Open);
+                BinaryFormatter bin = new BinaryFormatter();
+
+                orders = (List<Order>)bin.Deserialize(stream);
+
+            }
+            catch
+            {
+
+                orders = new List<Order>();
+            }
+
+            try
+            {
+                Stream stream = File.Open("stock.bin", FileMode.Open);
+                BinaryFormatter bin = new BinaryFormatter();
+
+                stocks = (Dictionary<Title, int>)bin.Deserialize(stream);
+
+            }
+            catch
+            {
+
+                stocks = new Dictionary<Title, int>();
+                foreach (Title title in Enum.GetValues(typeof(Title)))
+                {
+                    stocks.Add(title, i);
+                    i++;
+                }
+            }
+            
+        }
+        ~ShopService()
+        {
+            using (Stream stream = File.Open("orders.bin", FileMode.Create))
+            {
+
+                BinaryFormatter serializer = new BinaryFormatter();
+                serializer.Serialize(stream, orders);
+            }
+            using (Stream stream = File.Open("stock.bin", FileMode.Create))
+            {
+
+                BinaryFormatter serializer = new BinaryFormatter();
+                serializer.Serialize(stream, stocks);
             }
         }
 
@@ -52,8 +96,28 @@ namespace Shop_Server
             o.price=calcPrice(quant,t);
             id++;
             orders.Add(o);
-            //TODO verificar se existe stock e mandar;
+            if (stocks[t] >= quant)
+            {
+                stocks[t] -= quant;
+                o.state = OrderState.Dispatched;
+                o.date = DateTime.Now.AddDays(1);
+                sendEmail(o);
+            }
+            else
+            {
+                sendRequestToWH(t, quant * 10);
+                o.state = OrderState.WaitingExpediton;
+            }
+        }
 
+        private void sendRequestToWH(Title t, int quant)
+        {
+            //TODO
+        }
+
+        private void sendEmail(Order o)
+        {
+            //TODO
         }
 
         private double calcPrice(int quant, Title t)
@@ -69,6 +133,27 @@ namespace Shop_Server
             }
 
             return price*quant;
+        }
+
+
+        public void warehouseDispatch(Title t, DateTime date)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void orderArrived(Title t, int quant)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Subscribe()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Unsubscribe()
+        {
+            throw new NotImplementedException();
         }
     }
 }

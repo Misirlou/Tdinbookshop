@@ -251,6 +251,36 @@ namespace Shop_GUI.ShopService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IShopService/getStocks", ReplyAction="http://tempuri.org/IShopService/getStocksResponse")]
         System.Threading.Tasks.Task<System.Collections.Generic.Dictionary<Shop_GUI.ShopService.Title, int>> getStocksAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IShopService/addOrder", ReplyAction="http://tempuri.org/IShopService/addOrderResponse")]
+        void addOrder(string name, string addr, string email, int quant, Shop_GUI.ShopService.Title t);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IShopService/addOrder", ReplyAction="http://tempuri.org/IShopService/addOrderResponse")]
+        System.Threading.Tasks.Task addOrderAsync(string name, string addr, string email, int quant, Shop_GUI.ShopService.Title t);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IShopService/warehouseDispatch", ReplyAction="http://tempuri.org/IShopService/warehouseDispatchResponse")]
+        void warehouseDispatch(Shop_GUI.ShopService.Title t, System.DateTime date);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IShopService/warehouseDispatch", ReplyAction="http://tempuri.org/IShopService/warehouseDispatchResponse")]
+        System.Threading.Tasks.Task warehouseDispatchAsync(Shop_GUI.ShopService.Title t, System.DateTime date);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IShopService/orderArrived", ReplyAction="http://tempuri.org/IShopService/orderArrivedResponse")]
+        void orderArrived(Shop_GUI.ShopService.Title t, int quant);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IShopService/orderArrived", ReplyAction="http://tempuri.org/IShopService/orderArrivedResponse")]
+        System.Threading.Tasks.Task orderArrivedAsync(Shop_GUI.ShopService.Title t, int quant);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IShopService/Subscribe", ReplyAction="http://tempuri.org/IShopService/SubscribeResponse")]
+        void Subscribe();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IShopService/Subscribe", ReplyAction="http://tempuri.org/IShopService/SubscribeResponse")]
+        System.Threading.Tasks.Task SubscribeAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IShopService/Unsubscribe", ReplyAction="http://tempuri.org/IShopService/UnsubscribeResponse")]
+        void Unsubscribe();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IShopService/Unsubscribe", ReplyAction="http://tempuri.org/IShopService/UnsubscribeResponse")]
+        System.Threading.Tasks.Task UnsubscribeAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -294,6 +324,46 @@ namespace Shop_GUI.ShopService {
         
         public System.Threading.Tasks.Task<System.Collections.Generic.Dictionary<Shop_GUI.ShopService.Title, int>> getStocksAsync() {
             return base.Channel.getStocksAsync();
+        }
+        
+        public void addOrder(string name, string addr, string email, int quant, Shop_GUI.ShopService.Title t) {
+            base.Channel.addOrder(name, addr, email, quant, t);
+        }
+        
+        public System.Threading.Tasks.Task addOrderAsync(string name, string addr, string email, int quant, Shop_GUI.ShopService.Title t) {
+            return base.Channel.addOrderAsync(name, addr, email, quant, t);
+        }
+        
+        public void warehouseDispatch(Shop_GUI.ShopService.Title t, System.DateTime date) {
+            base.Channel.warehouseDispatch(t, date);
+        }
+        
+        public System.Threading.Tasks.Task warehouseDispatchAsync(Shop_GUI.ShopService.Title t, System.DateTime date) {
+            return base.Channel.warehouseDispatchAsync(t, date);
+        }
+        
+        public void orderArrived(Shop_GUI.ShopService.Title t, int quant) {
+            base.Channel.orderArrived(t, quant);
+        }
+        
+        public System.Threading.Tasks.Task orderArrivedAsync(Shop_GUI.ShopService.Title t, int quant) {
+            return base.Channel.orderArrivedAsync(t, quant);
+        }
+        
+        public void Subscribe() {
+            base.Channel.Subscribe();
+        }
+        
+        public System.Threading.Tasks.Task SubscribeAsync() {
+            return base.Channel.SubscribeAsync();
+        }
+        
+        public void Unsubscribe() {
+            base.Channel.Unsubscribe();
+        }
+        
+        public System.Threading.Tasks.Task UnsubscribeAsync() {
+            return base.Channel.UnsubscribeAsync();
         }
     }
 }

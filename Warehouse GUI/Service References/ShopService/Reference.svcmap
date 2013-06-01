@@ -19,15 +19,14 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://localhost:8733/Design_Time_Addresses/Shop_Server/ShopService/" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://localhost:8700/ShopService/mex" Protocol="mex" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="item.disco" MetadataType="Disco" ID="3183b475-b6b4-4b7a-ba0d-bcb41c88b3fc" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/Shop_Server/ShopService/?disco" />
-    <MetadataFile FileName="item.xsd" MetadataType="Schema" ID="35672b4a-e928-4b42-a408-6f17d42a0d2a" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/Shop_Server/ShopService/?xsd=xsd1" />
-    <MetadataFile FileName="item1.xsd" MetadataType="Schema" ID="186fbecc-7379-4f6c-94b3-a68aa3b22408" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/Shop_Server/ShopService/?xsd=xsd0" />
-    <MetadataFile FileName="item2.xsd" MetadataType="Schema" ID="ff6ee1bf-3011-4c37-b70b-f783e4edd078" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/Shop_Server/ShopService/?xsd=xsd3" />
-    <MetadataFile FileName="item3.xsd" MetadataType="Schema" ID="99bb7eb3-ccab-4eca-8ed8-78196d7ef64e" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/Shop_Server/ShopService/?xsd=xsd2" />
-    <MetadataFile FileName="ShopService.wsdl" MetadataType="Wsdl" ID="2d721cf6-84da-4a4d-a3f5-721c918381e9" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/Shop_Server/ShopService/?wsdl" />
+    <MetadataFile FileName="service.wsdl" MetadataType="Wsdl" ID="ffb1eb82-bbd2-4e8e-b582-ea81aeeb662a" SourceId="1" SourceUrl="http://localhost:8700/ShopService/mex" />
+    <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="769feb26-b714-4b5f-8687-9cf05c88f9ed" SourceId="1" SourceUrl="http://localhost:8700/ShopService/mex" />
+    <MetadataFile FileName="service1.xsd" MetadataType="Schema" ID="415b5bf0-d2e8-42a7-8e9b-5fa7c2913288" SourceId="1" SourceUrl="http://localhost:8700/ShopService/mex" />
+    <MetadataFile FileName="Shop_Server.xsd" MetadataType="Schema" ID="56da98db-8cae-422d-8ec2-fba92ea03fa3" SourceId="1" SourceUrl="http://localhost:8700/ShopService/mex" />
+    <MetadataFile FileName="Arrays.xsd" MetadataType="Schema" ID="14b44b9a-39b6-4319-84c1-ddf4bc7b7d2b" SourceId="1" SourceUrl="http://localhost:8700/ShopService/mex" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

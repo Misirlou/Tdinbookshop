@@ -16,7 +16,17 @@ namespace Shop_Server
         Dictionary<Title,int> getStocks();
         [OperationContract]
         void addOrder(string name,string addr,string email,int quant,Title t);
+        [OperationContract]
+        void warehouseDispatch(Title t, DateTime date);
+        [OperationContract]
+        void orderArrived(Title t,int quant);
+        [OperationContract]
+        void Subscribe();
+        [OperationContract]
+        void Unsubscribe();
     }
+
+    
 
 
     [DataContract]
@@ -67,66 +77,3 @@ namespace Shop_Server
     public enum OrderState { [EnumMember]WaitingExpediton,  [EnumMember] Dispatched, [EnumMember] DispatchWillOccur };
 
 }
-
-/*
-public class Order
-{
-    public Title title;
-    public int quant;
-    public string name;
-    public string address;
-    public string email;
-    public int id;
-    public OrderState state;
-    public DateTime date;
-
-    public Order(Title t, int quant, string name, string address, string email)
-    {
-        this.title = t;
-        this.quant = quant;
-        this.email = email;
-        this.address = address;
-        this.name = name;
-        id = 0;
-    }
-
-    public string State()
-    {
-        string s = "";
-        switch (state)
-        {
-            case OrderState.WaitingExpediton: s = "Waiting expedition";
-                break;
-            case OrderState.DispatchWillOccur: s = "Dispatch Will Occur at " + date.ToShortDateString();
-                break;
-            case OrderState.Dispatched: s = "Dispatched at " + date.ToShortDateString();
-                break;
-        }
-        return s;
-    }
-
-}
-
-
-public enum Title { LotR1, LotR2, LotR3, GoT1, GoT2, GoT3, GoT4, GoT5, HP1, HP2, HP3, HP4, HP5, HP6, HP7, CProgramming, AIBasicApproach, RemotingForDummies };
-
-public enum OrderState { WaitingExpediton, Dispatched, DispatchWillOccur };
-
-public delegate void AlterDelegate(OrderState os, Order or);
-
-public interface IOrders
-{
-    event AlterDelegate alterEvent;
-
-    void Add(Order o);
-
-
-    List<Order> GetOrdersByState(OrderState state);
-    List<Order> GetOrdersByState(OrderState state, string equipa);
-
-    List<Order> GetOrders(string name);
-    void ModifyOrder(int num, OrderState state);
-    void ModifyOrder(int num, OrderState state, String equipa);
-
-}
-*/

@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.ServiceModel;
 
 public partial class _Default : System.Web.UI.Page
 {
@@ -41,7 +42,10 @@ public partial class _Default : System.Web.UI.Page
         tbQuant.Text = "";
         
         ShopService.ShopServiceClient proxy = new ShopService.ShopServiceClient();
+
       proxy.addOrder(name,morada,email,quant,title);
       proxy.Close();
     }
+
+
 }

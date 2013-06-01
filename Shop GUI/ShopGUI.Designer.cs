@@ -78,6 +78,7 @@
             this.Controls.Add(this.Orders);
             this.Name = "ShopGUI";
             this.Text = "Shop GUI";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ShopGUI_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 
