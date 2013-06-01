@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shop Server", "Shop Server\Shop Server.csproj", "{64100EA6-9200-411D-A9AA-E0E01E61DF90}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Warehouse Server", "Warehouse Server\Warehouse Server.csproj", "{2EAFD875-FBBE-4E3E-AFA6-3E8BBB395939}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shop GUI", "Shop GUI\Shop GUI.csproj", "{91DD5929-52F0-4CBB-90E1-901C45CD5ACC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{64100EA6-9200-411D-A9AA-E0E01E61DF90}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{64100EA6-9200-411D-A9AA-E0E01E61DF90}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{64100EA6-9200-411D-A9AA-E0E01E61DF90}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{64100EA6-9200-411D-A9AA-E0E01E61DF90}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2EAFD875-FBBE-4E3E-AFA6-3E8BBB395939}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2EAFD875-FBBE-4E3E-AFA6-3E8BBB395939}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2EAFD875-FBBE-4E3E-AFA6-3E8BBB395939}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2EAFD875-FBBE-4E3E-AFA6-3E8BBB395939}.Release|Any CPU.Build.0 = Release|Any CPU
+		{91DD5929-52F0-4CBB-90E1-901C45CD5ACC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{91DD5929-52F0-4CBB-90E1-901C45CD5ACC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{91DD5929-52F0-4CBB-90E1-901C45CD5ACC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{91DD5929-52F0-4CBB-90E1-901C45CD5ACC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
