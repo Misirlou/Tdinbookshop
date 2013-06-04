@@ -15,6 +15,8 @@ namespace Shop_Server
     {
         private ServiceHost SHost = null;
         private ShopService SServ = null;
+        private ServiceHost WHost = null;
+        private WebService  WServ = null;
 
         public ShopServer()
         {
@@ -30,6 +32,10 @@ namespace Shop_Server
                 SServ.pass = tbPass.Text;
                 SHost = new ServiceHost(SServ);
                 SHost.Open();
+                WServ = new WebService();
+                WServ.shopSrv = SServ;
+                WHost = new ServiceHost(WServ);
+                WHost.Open();
                 label1.Text = "Serviço Aberto";
                 button1.Text = "Fechar Serviço";
             }

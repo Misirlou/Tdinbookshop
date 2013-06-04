@@ -6,6 +6,7 @@ using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.ServiceModel;
 using System.Text;
+using System.Messaging;
 
 namespace Warehouse_Server
 {
@@ -14,8 +15,11 @@ namespace Warehouse_Server
     public class WarehouseService : IWarehouseService
     {
         public Dictionary<Title, int> requests;
+        public MessageQueue msq;
+
         public WarehouseService()
         {
+            this.msq = new System.Messaging.MessageQueue();
             try
             {
                 Stream stream = File.Open("requests.bin", FileMode.Open);
@@ -43,8 +47,33 @@ namespace Warehouse_Server
         class Obj { public Title t; public int quant;} ;
         public Dictionary<Title, int> getShopRequests()
         {
+            msq.Path = ".\\private$\\tdin";
+            msq.Formatter = new XmlMessageFormatter(new Type[] { typeof(Obj) });
+            Message[] msqs = msq.GetAllMessages();
+            foreach (Message msg in msqs)
+            {
+                Obj obj=(Obj)msg.Body;
+                int quant;
+                if (requests.TryGetValue(obj.t, out quant))
+                {
+                    requests[obj.t] += quant;
+                }
+                else
+                {
+                    requests.Add(obj.t, quant);
+                }
 
-            throw new NotImplementedException();
+            }
+            msq.Purge();
+            return requests;
+            
+        }
+
+
+
+        public void deliverRequest(Title t)
+        {
+            requests.Remove(t);
         }
     }
 }

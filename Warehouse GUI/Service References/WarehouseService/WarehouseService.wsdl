@@ -14,16 +14,35 @@
   <wsdl:message name="IWarehouseService_getShopRequests_OutputMessage">
     <wsdl:part name="parameters" element="tns:getShopRequestsResponse" />
   </wsdl:message>
+  <wsdl:message name="IWarehouseService_deliverRequest_InputMessage">
+    <wsdl:part name="parameters" element="tns:deliverRequest" />
+  </wsdl:message>
+  <wsdl:message name="IWarehouseService_deliverRequest_OutputMessage">
+    <wsdl:part name="parameters" element="tns:deliverRequestResponse" />
+  </wsdl:message>
   <wsdl:portType name="IWarehouseService">
     <wsdl:operation name="getShopRequests">
       <wsdl:input wsaw:Action="http://tempuri.org/IWarehouseService/getShopRequests" message="tns:IWarehouseService_getShopRequests_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IWarehouseService/getShopRequestsResponse" message="tns:IWarehouseService_getShopRequests_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="deliverRequest">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWarehouseService/deliverRequest" message="tns:IWarehouseService_deliverRequest_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWarehouseService/deliverRequestResponse" message="tns:IWarehouseService_deliverRequest_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IWarehouseService" type="tns:IWarehouseService">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="getShopRequests">
       <soap:operation soapAction="http://tempuri.org/IWarehouseService/getShopRequests" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deliverRequest">
+      <soap:operation soapAction="http://tempuri.org/IWarehouseService/deliverRequest" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

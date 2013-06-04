@@ -71,6 +71,8 @@ namespace Shop_Server
         }
         ~ShopService()
         {
+            msq.Close();
+            msq = null;
             using (Stream stream = File.Open("orders.bin", FileMode.Create))
             {
 
@@ -126,13 +128,15 @@ namespace Shop_Server
             obj.quant = quant;
 
             msq.Formatter = new XmlMessageFormatter(new Type[] { typeof(Obj) });
-            msq.Send(obj,"a");
+            msq.Send(obj,"bookrequest");
 		    
 
         }
 
         private void sendEmail(Order o)
         {
+            if (mail == "") return; //se nao inserir email, retornar para nao spamar a google
+
             var fromAddress = new MailAddress(mail, "From Name");
             var toAddress = new MailAddress(o.email, "To Name");
             string fromPassword = pass;

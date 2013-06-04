@@ -16,7 +16,6 @@
       <xs:element minOccurs="0" name="price" type="xs:double" />
       <xs:element minOccurs="0" name="quant" type="xs:int" />
       <xs:element minOccurs="0" name="state" type="tns:OrderState" />
-      <xs:element minOccurs="0" name="stateStr" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="title" type="tns:Title" />
     </xs:sequence>
   </xs:complexType>

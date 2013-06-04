@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/Shop_Server" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Shop_Server" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:simpleType name="Title">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="LotR" />
+      <xs:enumeration value="GoT" />
+      <xs:enumeration value="CProgramming" />
+      <xs:enumeration value="AIBasicApproach" />
+      <xs:enumeration value="RemotingForDummies" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="Title" nillable="true" type="tns:Title" />
+</xs:schema>

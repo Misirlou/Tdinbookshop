@@ -13,6 +13,8 @@ namespace Warehouse_Server
     {
         [OperationContract]
         Dictionary<Title,int> getShopRequests();
+        [OperationContract]
+        void deliverRequest(Title t);
     }
     [DataContract(Name = "Title")]
     public enum Title { [EnumMember]LotR, [EnumMember] GoT,[EnumMember] CProgramming,[EnumMember] AIBasicApproach,[EnumMember] RemotingForDummies };

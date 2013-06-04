@@ -41,6 +41,12 @@ namespace Warehouse_GUI.WarehouseService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWarehouseService/getShopRequests", ReplyAction="http://tempuri.org/IWarehouseService/getShopRequestsResponse")]
         System.Threading.Tasks.Task<System.Collections.Generic.Dictionary<Warehouse_GUI.WarehouseService.Title, int>> getShopRequestsAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWarehouseService/deliverRequest", ReplyAction="http://tempuri.org/IWarehouseService/deliverRequestResponse")]
+        void deliverRequest(Warehouse_GUI.WarehouseService.Title t);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWarehouseService/deliverRequest", ReplyAction="http://tempuri.org/IWarehouseService/deliverRequestResponse")]
+        System.Threading.Tasks.Task deliverRequestAsync(Warehouse_GUI.WarehouseService.Title t);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -76,6 +82,14 @@ namespace Warehouse_GUI.WarehouseService {
         
         public System.Threading.Tasks.Task<System.Collections.Generic.Dictionary<Warehouse_GUI.WarehouseService.Title, int>> getShopRequestsAsync() {
             return base.Channel.getShopRequestsAsync();
+        }
+        
+        public void deliverRequest(Warehouse_GUI.WarehouseService.Title t) {
+            base.Channel.deliverRequest(t);
+        }
+        
+        public System.Threading.Tasks.Task deliverRequestAsync(Warehouse_GUI.WarehouseService.Title t) {
+            return base.Channel.deliverRequestAsync(t);
         }
     }
 }

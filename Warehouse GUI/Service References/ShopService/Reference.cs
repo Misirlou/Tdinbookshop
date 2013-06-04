@@ -47,9 +47,6 @@ namespace Warehouse_GUI.ShopService {
         private Warehouse_GUI.ShopService.OrderState stateField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string stateStrField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private Warehouse_GUI.ShopService.Title titleField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
@@ -162,19 +159,6 @@ namespace Warehouse_GUI.ShopService {
                 if ((this.stateField.Equals(value) != true)) {
                     this.stateField = value;
                     this.RaisePropertyChanged("state");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string stateStr {
-            get {
-                return this.stateStrField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.stateStrField, value) != true)) {
-                    this.stateStrField = value;
-                    this.RaisePropertyChanged("stateStr");
                 }
             }
         }

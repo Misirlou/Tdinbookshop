@@ -13,7 +13,7 @@ public partial class _Default : System.Web.UI.Page
     {
         if (ddl1.Items.Count==0)
         {
-            Hashtable ht = GetEnumForBind(typeof(ShopService.Title));
+            Hashtable ht = GetEnumForBind(typeof(WebService.Title));
             ddl1.DataSource = ht;
             ddl1.DataTextField = "value";
             ddl1.DataValueField = "key";
@@ -38,13 +38,13 @@ public partial class _Default : System.Web.UI.Page
     {
         string email = tbEmail.Text, name = tbName.Text, morada = tbMorada.Text;
         int quant = int.Parse(tbQuant.Text);
-        ShopService.Title title = (ShopService.Title)Enum.Parse(typeof(ShopService.Title), ddl1.SelectedValue);
+        WebService.Title title = (WebService.Title)Enum.Parse(typeof(WebService.Title), ddl1.SelectedValue);
         tbEmail.Text = "";
         tbMorada.Text = "";
         tbName.Text = "";
         tbQuant.Text = "";
         
-        ShopService.ShopServiceClient proxy = new ShopService.ShopServiceClient();
+        WebService.WebServiceClient proxy = new WebService.WebServiceClient();
 
       proxy.addOrder(name,morada,email,quant,title);    
       proxy.Close();
