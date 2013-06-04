@@ -11,12 +11,15 @@ public partial class _Default : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        Hashtable ht = GetEnumForBind(typeof(ShopService.Title));
-        ddl1.DataSource = ht;
-        ddl1.DataTextField = "value";
-        ddl1.DataValueField = "key";
-        ddl1.DataBind();
-        ddl1.SelectedIndex = 0;
+        if (ddl1.Items.Count==0)
+        {
+            Hashtable ht = GetEnumForBind(typeof(ShopService.Title));
+            ddl1.DataSource = ht;
+            ddl1.DataTextField = "value";
+            ddl1.DataValueField = "key";
+            ddl1.DataBind();
+            ddl1.SelectedIndex = 0;
+        }
     }
 
     public Hashtable GetEnumForBind(Type enumeration)
@@ -43,7 +46,7 @@ public partial class _Default : System.Web.UI.Page
         
         ShopService.ShopServiceClient proxy = new ShopService.ShopServiceClient();
 
-      proxy.addOrder(name,morada,email,quant,title);
+      proxy.addOrder(name,morada,email,quant,title);    
       proxy.Close();
     }
 

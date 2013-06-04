@@ -40,8 +40,10 @@ namespace Warehouse_Server
             }
         }
 
+        class Obj { public Title t; public int quant;} ;
         public Dictionary<Title, int> getShopRequests()
         {
+
             throw new NotImplementedException();
         }
     }

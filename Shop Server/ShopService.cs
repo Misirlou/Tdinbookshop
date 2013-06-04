@@ -8,6 +8,9 @@ using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.ServiceModel;
 using System.Text;
+using System.Messaging;
+
+
 
 namespace Shop_Server
 {
@@ -18,6 +21,8 @@ namespace Shop_Server
         List<Order> orders;
         Dictionary<Title,int> stocks;
         int id;
+        public string mail, pass;
+        MessageQueue msq;
 
         public List<Order> getOrders()
         {
@@ -26,6 +31,8 @@ namespace Shop_Server
 
         public ShopService()
         {
+
+            msq = new MessageQueue(".\\private$\\tdin");
             id = 1;
             try
             {
@@ -111,19 +118,26 @@ namespace Shop_Server
                 o.state = OrderState.WaitingExpediton;
             }
         }
-
+        public class Obj { public Title t; public int quant;} ;
         private void sendRequestToWH(Title t, int quant)
         {
-            //TODO
+            Obj obj=new Obj();
+            obj.t = t;
+            obj.quant = quant;
+
+            msq.Formatter = new XmlMessageFormatter(new Type[] { typeof(Obj) });
+            msq.Send(obj,"a");
+		    
+
         }
 
         private void sendEmail(Order o)
         {
-            var fromAddress = new MailAddress("diogotbasto@gmail.com", "From Name");
+            var fromAddress = new MailAddress(mail, "From Name");
             var toAddress = new MailAddress(o.email, "To Name");
-            const string fromPassword = "lololol";
+            string fromPassword = pass;
             const string subject = "Book Order";
-            string body = "Your order for "+o.quant.ToString()+" "+System.Enum.GetName(typeof(Title),o.title)+" is supposed to arrive at "+o.date.ToShortDateString();
+            string body = "Your order for "+o.quant.ToString()+" "+System.Enum.GetName(typeof(Title),o.title)+" is supposed to arrive at "+o.date.ToShortDateString()+". The price is "+o.price.ToString("C")+".";
 
             var smtp = new SmtpClient
             {

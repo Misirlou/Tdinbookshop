@@ -14,6 +14,7 @@ namespace Shop_Server
     public partial class ShopServer : Form
     {
         private ServiceHost SHost = null;
+        private ShopService SServ = null;
 
         public ShopServer()
         {
@@ -24,7 +25,10 @@ namespace Shop_Server
         {
             if (SHost == null)
             {
-                SHost = new ServiceHost(typeof(ShopService));
+                SServ = new ShopService();
+                SServ.mail = tbMail.Text;
+                SServ.pass = tbPass.Text;
+                SHost = new ServiceHost(SServ);
                 SHost.Open();
                 label1.Text = "Serviço Aberto";
                 button1.Text = "Fechar Serviço";
@@ -33,6 +37,7 @@ namespace Shop_Server
             {
                 SHost.Close();
                 SHost = null;
+                SServ = null;
                 label1.Text = "Serviço Fechado";
                 button1.Text = "Abrir Serviço";
             }
@@ -43,6 +48,7 @@ namespace Shop_Server
             if (SHost != null)
                 SHost.Close();
         }
+
     }
 
 
