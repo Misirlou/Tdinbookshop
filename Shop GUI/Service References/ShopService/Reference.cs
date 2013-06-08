@@ -236,22 +236,22 @@ namespace Shop_GUI.ShopService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IShopService/getStocks", ReplyAction="http://tempuri.org/IShopService/getStocksResponse")]
         System.Threading.Tasks.Task<System.Collections.Generic.Dictionary<Shop_GUI.ShopService.Title, int>> getStocksAsync();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IShopService/addOrder", ReplyAction="http://tempuri.org/IShopService/addOrderResponse")]
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IShopService/addOrder")]
         void addOrder(string name, string addr, string email, int quant, Shop_GUI.ShopService.Title t);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IShopService/addOrder", ReplyAction="http://tempuri.org/IShopService/addOrderResponse")]
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IShopService/addOrder")]
         System.Threading.Tasks.Task addOrderAsync(string name, string addr, string email, int quant, Shop_GUI.ShopService.Title t);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IShopService/warehouseDispatch", ReplyAction="http://tempuri.org/IShopService/warehouseDispatchResponse")]
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IShopService/warehouseDispatch")]
         void warehouseDispatch(Shop_GUI.ShopService.Title t, int quant);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IShopService/warehouseDispatch", ReplyAction="http://tempuri.org/IShopService/warehouseDispatchResponse")]
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IShopService/warehouseDispatch")]
         System.Threading.Tasks.Task warehouseDispatchAsync(Shop_GUI.ShopService.Title t, int quant);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IShopService/orderArrived", ReplyAction="http://tempuri.org/IShopService/orderArrivedResponse")]
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IShopService/orderArrived")]
         void orderArrived(Shop_GUI.ShopService.Title t, int quant);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IShopService/orderArrived", ReplyAction="http://tempuri.org/IShopService/orderArrivedResponse")]
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IShopService/orderArrived")]
         System.Threading.Tasks.Task orderArrivedAsync(Shop_GUI.ShopService.Title t, int quant);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IShopService/Subscribe", ReplyAction="http://tempuri.org/IShopService/SubscribeResponse")]

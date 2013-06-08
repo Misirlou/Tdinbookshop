@@ -14,11 +14,11 @@ namespace Shop_Server
         List<Order> getOrders();
         [OperationContract]
         Dictionary<Title,int> getStocks();
-        [OperationContract] 
+        [OperationContract(IsOneWay=true)] 
         void addOrder(string name,string addr,string email,int quant,Title t);
-        [OperationContract]
+        [OperationContract(IsOneWay = true)]
         void warehouseDispatch(Title t,int quant);
-        [OperationContract]
+        [OperationContract(IsOneWay = true)]
         void orderArrived(Title t,int quant);
         [OperationContract]
         void Subscribe();
