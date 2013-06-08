@@ -243,10 +243,10 @@ namespace Warehouse_GUI.ShopService {
         System.Threading.Tasks.Task addOrderAsync(string name, string addr, string email, int quant, Warehouse_GUI.ShopService.Title t);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IShopService/warehouseDispatch", ReplyAction="http://tempuri.org/IShopService/warehouseDispatchResponse")]
-        void warehouseDispatch(Warehouse_GUI.ShopService.Title t, System.DateTime date);
+        void warehouseDispatch(Warehouse_GUI.ShopService.Title t, int quant);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IShopService/warehouseDispatch", ReplyAction="http://tempuri.org/IShopService/warehouseDispatchResponse")]
-        System.Threading.Tasks.Task warehouseDispatchAsync(Warehouse_GUI.ShopService.Title t, System.DateTime date);
+        System.Threading.Tasks.Task warehouseDispatchAsync(Warehouse_GUI.ShopService.Title t, int quant);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IShopService/orderArrived", ReplyAction="http://tempuri.org/IShopService/orderArrivedResponse")]
         void orderArrived(Warehouse_GUI.ShopService.Title t, int quant);
@@ -318,12 +318,12 @@ namespace Warehouse_GUI.ShopService {
             return base.Channel.addOrderAsync(name, addr, email, quant, t);
         }
         
-        public void warehouseDispatch(Warehouse_GUI.ShopService.Title t, System.DateTime date) {
-            base.Channel.warehouseDispatch(t, date);
+        public void warehouseDispatch(Warehouse_GUI.ShopService.Title t, int quant) {
+            base.Channel.warehouseDispatch(t, quant);
         }
         
-        public System.Threading.Tasks.Task warehouseDispatchAsync(Warehouse_GUI.ShopService.Title t, System.DateTime date) {
-            return base.Channel.warehouseDispatchAsync(t, date);
+        public System.Threading.Tasks.Task warehouseDispatchAsync(Warehouse_GUI.ShopService.Title t, int quant) {
+            return base.Channel.warehouseDispatchAsync(t, quant);
         }
         
         public void orderArrived(Warehouse_GUI.ShopService.Title t, int quant) {

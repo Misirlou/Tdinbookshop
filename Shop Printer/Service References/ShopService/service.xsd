@@ -46,7 +46,7 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/Shop_Server" minOccurs="0" name="t" type="q4:Title" />
-        <xs:element minOccurs="0" name="date" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="quant" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

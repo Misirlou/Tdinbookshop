@@ -178,14 +178,37 @@ namespace Shop_Server
         }
 
 
-        public void warehouseDispatch(Title t, DateTime date)
+        public void warehouseDispatch(Title t,int quant)
         {
-            throw new NotImplementedException();
+            foreach (Order o in orders)
+            {
+                if (o.state == OrderState.WaitingExpediton && o.title == t)
+                {
+                    o.state = OrderState.DispatchWillOccur;
+                        o.date = DateTime.Now.AddDays(2);
+                   
+
+                }
+            }
         }
 
         public void orderArrived(Title t, int quant)
         {
-            throw new NotImplementedException();
+            stocks[t] += quant;
+            foreach (Order o in orders)
+            {
+                if (o.state == OrderState.DispatchWillOccur && o.title == t)
+                {
+                    if (stocks[t] >= o.quant)
+                    {
+                        o.state = OrderState.Dispatched;
+                        o.date = DateTime.Now;
+                        stocks[t] -= o.quant;
+                        sendEmail(o);
+                    }
+
+                }
+            }
         }
 
         public void Subscribe()

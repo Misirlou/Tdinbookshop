@@ -17,7 +17,7 @@ namespace Shop_Server
         [OperationContract]
         void addOrder(string name,string addr,string email,int quant,Title t);
         [OperationContract]
-        void warehouseDispatch(Title t, DateTime date);
+        void warehouseDispatch(Title t,int quant);
         [OperationContract]
         void orderArrived(Title t,int quant);
         [OperationContract]
