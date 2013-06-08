@@ -12,6 +12,7 @@ using Shop_GUI.ShopService;
 
 namespace Shop_GUI
 {
+    [CallbackBehavior(ConcurrencyMode=ConcurrencyMode.Reentrant)]
     public partial class ShopGUI : Form , IShopServiceCallback
     {
         ShopServiceClient proxy;
@@ -21,6 +22,21 @@ namespace Shop_GUI
             proxy = new ShopServiceClient(new InstanceContext(this));
             proxy.SetClientBaseAddress();
             proxy.Subscribe();
+
+            List<Order> orders = proxy.getOrders();
+            Orders.Items.Clear();
+            foreach (Order order in orders)
+            {
+                Orders.Items.Add(order.id + " " + Enum.GetName(typeof(Title), order.title) + " " + order.quant);
+            }
+
+            Dictionary<Title, int> stocks = proxy.getStocks();
+            Stock.Items.Clear();
+            foreach (Title t in stocks.Keys)
+            {
+                Stock.Items.Add(Enum.GetName(typeof(Title), t) + " " + stocks[t]);
+            }
+
         }
 
 

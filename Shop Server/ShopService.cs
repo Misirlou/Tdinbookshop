@@ -15,7 +15,7 @@ using System.Messaging;
 namespace Shop_Server
 {
     // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "ShopService" in both code and config file together.
-    [ServiceBehavior(InstanceContextMode = InstanceContextMode.Single)]
+    [ServiceBehavior(InstanceContextMode = InstanceContextMode.Single,ConcurrencyMode=ConcurrencyMode.Reentrant)]
     public class ShopService : IShopService
     {
         List<Order> orders;
@@ -41,6 +41,7 @@ namespace Shop_Server
                 BinaryFormatter bin = new BinaryFormatter();
 
                 orders = (List<Order>)bin.Deserialize(stream);
+                id = orders.Count + 1;
 
             }
             catch
