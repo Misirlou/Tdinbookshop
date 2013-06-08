@@ -110,9 +110,18 @@ namespace Shop_GUI
 
         private void Orders_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Order o = orders[Orders.SelectedIndex];
-            textBox1.Text = "id:" + o.id.ToString() + "\r\nname:" + o.name + "\r\nntitle:" + Enum.GetName(typeof(Title), o.title) + "\r\nquantity:" + o.quant.ToString() + "\r\nstate:" + Enum.GetName(typeof(OrderState), o.state);
-            if (o.date != null && o.state != OrderState.WaitingExpediton) textBox1.Text += " " + o.date.ToShortDateString();
+            if (Orders.SelectedIndex < 0 || Orders.SelectedIndex >= orders.Count)
+            {
+                textBox1.Text = "";
+            }
+            else
+            {
+                Order o = orders[Orders.SelectedIndex];
+                textBox1.Text = "id:" + o.id.ToString() + "\r\nname:" + o.name + "\r\nntitle:" + Enum.GetName(typeof(Title), o.title) + "\r\nquantity:" + o.quant.ToString() + "\r\nstate:" + Enum.GetName(typeof(OrderState), o.state);
+                if (o.date != null && o.state != OrderState.WaitingExpediton) textBox1.Text += " " + o.date.ToShortDateString();
+
+
+            }
         }
     }
 }
