@@ -16,6 +16,8 @@ namespace Shop_GUI
     public partial class ShopGUI : Form , IShopServiceCallback
     {
         ShopServiceClient proxy;
+        List<Order> orders;
+
         public ShopGUI()
         {
             InitializeComponent();
@@ -23,7 +25,7 @@ namespace Shop_GUI
             proxy.SetClientBaseAddress();
             proxy.Subscribe();
 
-            List<Order> orders = proxy.getOrders();
+            orders = proxy.getOrders();
             Orders.Items.Clear();
             foreach (Order order in orders)
             {
@@ -49,7 +51,7 @@ namespace Shop_GUI
 
         private void button2_Click(object sender, EventArgs e)
         {
-            /*List<Order> orders=proxy.getOrders();
+            /*orders=proxy.getOrders();
             Orders.Items.Clear();
             foreach(Order order in orders)
             {
@@ -87,6 +89,7 @@ namespace Shop_GUI
 
         public void OrderUpdated(List<Order> orders, Dictionary<Title, int> stocks)
         {
+            this.orders = orders;
             Orders.Items.Clear();
             foreach (Order order in orders)
             {
@@ -103,6 +106,13 @@ namespace Shop_GUI
         public void OrderCompleted(Order o)
         {
             return;
+        }
+
+        private void Orders_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Order o = orders[Orders.SelectedIndex];
+            textBox1.Text = "id:" + o.id.ToString() + "\r\nname:" + o.name + "\r\nntitle:" + Enum.GetName(typeof(Title), o.title) + "\r\nquantity:" + o.quant.ToString() + "\r\nstate:" + Enum.GetName(typeof(OrderState), o.state);
+            if (o.date != null && o.state != OrderState.WaitingExpediton) textBox1.Text += " " + o.date.ToShortDateString();
         }
     }
 }
