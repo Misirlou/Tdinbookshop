@@ -52,7 +52,12 @@ namespace Shop_Server
         private void ShopServer_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (SHost != null)
+            {
+
                 SHost.Close();
+                SHost = null;
+                SServ = null;
+            }
         }
 
     }

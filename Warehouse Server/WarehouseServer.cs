@@ -14,6 +14,8 @@ namespace Warehouse_Server
     public partial class WarehouseServer : Form
     {
         private ServiceHost SHost = null;
+        private WarehouseService WHServ = null;
+
         public WarehouseServer()
         {
             InitializeComponent();
@@ -22,7 +24,8 @@ namespace Warehouse_Server
         {
             if (SHost == null)
             {
-                SHost = new ServiceHost(typeof(WarehouseService));
+                WHServ = new WarehouseService();
+                SHost = new ServiceHost(WHServ);
                 SHost.Open();
                 label1.Text = "Serviço Aberto";
                 button1.Text = "Fechar Serviço";
@@ -31,6 +34,7 @@ namespace Warehouse_Server
             {
                 SHost.Close();
                 SHost = null;
+                WHServ = null;
                 label1.Text = "Serviço Fechado";
                 button1.Text = "Abrir Serviço";
             }
@@ -39,7 +43,13 @@ namespace Warehouse_Server
         private void ShopServer_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (SHost != null)
+            {
                 SHost.Close();
+
+                SHost = null;
+                WHServ = null;
+            }
+
         }
     }
 }
