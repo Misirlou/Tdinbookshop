@@ -7,14 +7,14 @@ using System.Text;
 
 namespace Shop_Server
 {
-    [ServiceContract]
+    [ServiceContract(CallbackContract = typeof(ICallback))]
     public interface IShopService
     {
         [OperationContract]
         List<Order> getOrders();
         [OperationContract]
         Dictionary<Title,int> getStocks();
-        [OperationContract]
+        [OperationContract] 
         void addOrder(string name,string addr,string email,int quant,Title t);
         [OperationContract]
         void warehouseDispatch(Title t,int quant);
@@ -75,5 +75,14 @@ namespace Shop_Server
 
     [DataContract(Name = "OrderState")]
     public enum OrderState { [EnumMember]WaitingExpediton,  [EnumMember] Dispatched, [EnumMember] DispatchWillOccur };
+
+
+    public interface ICallback
+    {
+        [OperationContract(IsOneWay = true)]
+        void OrderUpdated();
+        [OperationContract(IsOneWay = true)]
+        void OrderCompleted(Order o);
+    }
 
 }

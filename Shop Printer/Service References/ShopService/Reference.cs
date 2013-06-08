@@ -221,7 +221,7 @@ namespace Shop_Printer.ShopService {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ShopService.IShopService")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ShopService.IShopService", CallbackContract=typeof(Shop_Printer.ShopService.IShopServiceCallback))]
     public interface IShopService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IShopService/getOrders", ReplyAction="http://tempuri.org/IShopService/getOrdersResponse")]
@@ -268,30 +268,41 @@ namespace Shop_Printer.ShopService {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface IShopServiceCallback {
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IShopService/OrderUpdated")]
+        void OrderUpdated();
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IShopService/OrderCompleted")]
+        void OrderCompleted(Shop_Printer.ShopService.Order o);
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public interface IShopServiceChannel : Shop_Printer.ShopService.IShopService, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class ShopServiceClient : System.ServiceModel.ClientBase<Shop_Printer.ShopService.IShopService>, Shop_Printer.ShopService.IShopService {
+    public partial class ShopServiceClient : System.ServiceModel.DuplexClientBase<Shop_Printer.ShopService.IShopService>, Shop_Printer.ShopService.IShopService {
         
-        public ShopServiceClient() {
+        public ShopServiceClient(System.ServiceModel.InstanceContext callbackInstance) : 
+                base(callbackInstance) {
         }
         
-        public ShopServiceClient(string endpointConfigurationName) : 
-                base(endpointConfigurationName) {
+        public ShopServiceClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName) : 
+                base(callbackInstance, endpointConfigurationName) {
         }
         
-        public ShopServiceClient(string endpointConfigurationName, string remoteAddress) : 
-                base(endpointConfigurationName, remoteAddress) {
+        public ShopServiceClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName, string remoteAddress) : 
+                base(callbackInstance, endpointConfigurationName, remoteAddress) {
         }
         
-        public ShopServiceClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
-                base(endpointConfigurationName, remoteAddress) {
+        public ShopServiceClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(callbackInstance, endpointConfigurationName, remoteAddress) {
         }
         
-        public ShopServiceClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
-                base(binding, remoteAddress) {
+        public ShopServiceClient(System.ServiceModel.InstanceContext callbackInstance, System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(callbackInstance, binding, remoteAddress) {
         }
         
         public Shop_Printer.ShopService.Order[] getOrders() {

@@ -221,7 +221,7 @@ namespace Warehouse_GUI.ShopService {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ShopService.IShopService")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ShopService.IShopService", CallbackContract=typeof(Warehouse_GUI.ShopService.IShopServiceCallback))]
     public interface IShopService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IShopService/getOrders", ReplyAction="http://tempuri.org/IShopService/getOrdersResponse")]
@@ -268,30 +268,41 @@ namespace Warehouse_GUI.ShopService {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface IShopServiceCallback {
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IShopService/OrderUpdated")]
+        void OrderUpdated();
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IShopService/OrderCompleted")]
+        void OrderCompleted(Warehouse_GUI.ShopService.Order o);
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public interface IShopServiceChannel : Warehouse_GUI.ShopService.IShopService, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class ShopServiceClient : System.ServiceModel.ClientBase<Warehouse_GUI.ShopService.IShopService>, Warehouse_GUI.ShopService.IShopService {
+    public partial class ShopServiceClient : System.ServiceModel.DuplexClientBase<Warehouse_GUI.ShopService.IShopService>, Warehouse_GUI.ShopService.IShopService {
         
-        public ShopServiceClient() {
+        public ShopServiceClient(System.ServiceModel.InstanceContext callbackInstance) : 
+                base(callbackInstance) {
         }
         
-        public ShopServiceClient(string endpointConfigurationName) : 
-                base(endpointConfigurationName) {
+        public ShopServiceClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName) : 
+                base(callbackInstance, endpointConfigurationName) {
         }
         
-        public ShopServiceClient(string endpointConfigurationName, string remoteAddress) : 
-                base(endpointConfigurationName, remoteAddress) {
+        public ShopServiceClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName, string remoteAddress) : 
+                base(callbackInstance, endpointConfigurationName, remoteAddress) {
         }
         
-        public ShopServiceClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
-                base(endpointConfigurationName, remoteAddress) {
+        public ShopServiceClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(callbackInstance, endpointConfigurationName, remoteAddress) {
         }
         
-        public ShopServiceClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
-                base(binding, remoteAddress) {
+        public ShopServiceClient(System.ServiceModel.InstanceContext callbackInstance, System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(callbackInstance, binding, remoteAddress) {
         }
         
         public System.Collections.Generic.List<Warehouse_GUI.ShopService.Order> getOrders() {

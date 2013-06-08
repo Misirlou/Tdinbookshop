@@ -15,18 +15,19 @@ using System.Messaging;
 namespace Shop_Server
 {
     // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "ShopService" in both code and config file together.
-    [ServiceBehavior(InstanceContextMode = InstanceContextMode.Single)]
+    [ServiceBehavior(InstanceContextMode = InstanceContextMode.Single,ConcurrencyMode=ConcurrencyMode.Reentrant)]
     public class ShopService : IShopService
     {
         List<Order> orders;
-        Dictionary<Title,int> stocks;
+        Dictionary<Title, int> stocks;
         int id;
         public string mail, pass;
         MessageQueue msq;
+        public List<ICallback> subscribers = new List<ICallback>();
 
         public List<Order> getOrders()
         {
-            return orders;
+            return orders.Where(order => order.state != OrderState.Dispatched).ToList();
         }
 
         public ShopService()
@@ -67,7 +68,7 @@ namespace Shop_Server
                     i++;
                 }
             }
-            
+
         }
         ~ShopService()
         {
@@ -104,7 +105,7 @@ namespace Shop_Server
             o.quant = quant;
             o.title = t;
             o.id = id;
-            o.price=calcPrice(quant,t);
+            o.price = calcPrice(quant, t);
             id++;
             orders.Add(o);
             if (stocks[t] >= quant)
@@ -119,29 +120,31 @@ namespace Shop_Server
                 sendRequestToWH(t, quant * 10);
                 o.state = OrderState.WaitingExpediton;
             }
+            NotifyUpdated();
         }
         public class Obj { public Title t; public int quant;} ;
         private void sendRequestToWH(Title t, int quant)
         {
-            Obj obj=new Obj();
+            Obj obj = new Obj();
             obj.t = t;
             obj.quant = quant;
 
             msq.Formatter = new XmlMessageFormatter(new Type[] { typeof(Obj) });
-            msq.Send(obj,"bookrequest");
-		    
+            msq.Send(obj, "bookrequest");
+
 
         }
 
         private void sendEmail(Order o)
         {
+            NotifyCompleted(o);
             if (mail == "") return; //se nao inserir email, retornar para nao spamar a google
 
             var fromAddress = new MailAddress(mail, "From Name");
             var toAddress = new MailAddress(o.email, "To Name");
             string fromPassword = pass;
             const string subject = "Book Order";
-            string body = "Your order for "+o.quant.ToString()+" "+System.Enum.GetName(typeof(Title),o.title)+" is supposed to arrive at "+o.date.ToShortDateString()+". The price is "+o.price.ToString("C")+".";
+            string body = "Your order for " + o.quant.ToString() + " " + System.Enum.GetName(typeof(Title), o.title) + " is supposed to arrive at " + o.date.ToShortDateString() + ". The price is " + o.price.ToString("C") + ".";
 
             var smtp = new SmtpClient
             {
@@ -164,7 +167,7 @@ namespace Shop_Server
 
         private double calcPrice(int quant, Title t)
         {
-            double price=0;
+            double price = 0;
             switch (t)
             {
                 case Title.GoT: price = 1; break;
@@ -174,22 +177,24 @@ namespace Shop_Server
                 case Title.AIBasicApproach: price = 3; break;
             }
 
-            return price*quant;
+            return price * quant;
         }
 
 
-        public void warehouseDispatch(Title t,int quant)
+        public void warehouseDispatch(Title t, int quant)
         {
             foreach (Order o in orders)
             {
                 if (o.state == OrderState.WaitingExpediton && o.title == t)
                 {
                     o.state = OrderState.DispatchWillOccur;
-                        o.date = DateTime.Now.AddDays(2);
-                   
+                    o.date = DateTime.Now.AddDays(2);
+
 
                 }
             }
+
+            NotifyUpdated();
         }
 
         public void orderArrived(Title t, int quant)
@@ -209,16 +214,44 @@ namespace Shop_Server
 
                 }
             }
+            NotifyUpdated();
         }
 
         public void Subscribe()
         {
-            throw new NotImplementedException();
+            ICallback callback = OperationContext.Current.GetCallbackChannel<ICallback>();
+            if (!subscribers.Contains(callback))
+            {
+                subscribers.Add(callback);
+            }
         }
 
         public void Unsubscribe()
         {
-            throw new NotImplementedException();
+            ICallback callback = OperationContext.Current.GetCallbackChannel<ICallback>();
+            subscribers.Remove(callback);
+        }
+
+        private void NotifyUpdated()
+        {
+            subscribers.ForEach(delegate(ICallback callback)
+            {
+                if (((ICommunicationObject)callback).State == CommunicationState.Opened)
+                    callback.OrderUpdated();
+                else
+                    subscribers.Remove(callback);
+            });
+        }
+
+        private void NotifyCompleted(Order o)
+        {
+            subscribers.ForEach(delegate(ICallback callback)
+            {
+                if (((ICommunicationObject)callback).State == CommunicationState.Opened)
+                    callback.OrderCompleted(o);
+                else
+                    subscribers.Remove(callback);
+            });
         }
     }
 }

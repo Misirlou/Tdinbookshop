@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.ServiceModel;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Warehouse_GUI.ShopService;
@@ -13,7 +14,7 @@ using Warehouse_GUI.WarehouseService;
 
 namespace Warehouse_GUI
 {
-    public partial class WarehouseGUI : Form
+    public partial class WarehouseGUI : Form ,IShopServiceCallback
     {
         ShopServiceClient proxyShop;
         WarehouseServiceClient proxyWH;
@@ -22,7 +23,8 @@ namespace Warehouse_GUI
         {
             InitializeComponent();
 
-            proxyShop = new ShopServiceClient();
+            proxyShop = new ShopServiceClient(new InstanceContext(this));
+            proxyShop.SetClientBaseAddress(); 
             proxyWH = new WarehouseServiceClient();
         }
 
@@ -58,5 +60,15 @@ namespace Warehouse_GUI
         }
 
 
+
+        public void OrderUpdated()
+        {
+            return;
+        }
+
+        public void OrderCompleted(Order o)
+        {
+            return;
+        }
     }
 }

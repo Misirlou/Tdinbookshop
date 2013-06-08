@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.ServiceModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,18 +12,21 @@ using Shop_GUI.ShopService;
 
 namespace Shop_GUI
 {
-    public partial class ShopGUI : Form
+    public partial class ShopGUI : Form , IShopServiceCallback
     {
         ShopServiceClient proxy;
         public ShopGUI()
         {
             InitializeComponent();
-            proxy = new ShopServiceClient();
+            proxy = new ShopServiceClient(new InstanceContext(this));
+            proxy.SetClientBaseAddress();
+            proxy.Subscribe();
         }
 
 
         private void ShopGUI_FormClosing(object sender, FormClosingEventArgs e)
         {
+            proxy.Unsubscribe();
             proxy.Close();
 
         }
@@ -42,6 +46,17 @@ namespace Shop_GUI
             {
                 Stock.Items.Add(Enum.GetName(typeof(Title),t)+" "+stocks[t]);
             }
+        }
+
+        public void OrderUpdated()
+        {
+            proxy.getStocks();
+            proxy.getOrders();
+        }
+
+        public void OrderCompleted(Order o)
+        {
+            return;
         }
     }
 }

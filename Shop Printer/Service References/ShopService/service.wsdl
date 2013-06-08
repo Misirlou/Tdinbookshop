@@ -63,6 +63,12 @@
   <wsdl:message name="IShopService_Unsubscribe_OutputMessage">
     <wsdl:part name="parameters" element="tns:UnsubscribeResponse" />
   </wsdl:message>
+  <wsdl:message name="IShopService_OrderUpdated_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:OrderUpdated" />
+  </wsdl:message>
+  <wsdl:message name="IShopService_OrderCompleted_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:OrderCompleted" />
+  </wsdl:message>
   <wsdl:portType name="IShopService">
     <wsdl:operation name="getOrders">
       <wsdl:input wsaw:Action="http://tempuri.org/IShopService/getOrders" message="tns:IShopService_getOrders_InputMessage" />
@@ -91,6 +97,12 @@
     <wsdl:operation name="Unsubscribe">
       <wsdl:input wsaw:Action="http://tempuri.org/IShopService/Unsubscribe" message="tns:IShopService_Unsubscribe_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IShopService/UnsubscribeResponse" message="tns:IShopService_Unsubscribe_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="OrderUpdated">
+      <wsdl:output wsaw:Action="http://tempuri.org/IShopService/OrderUpdated" message="tns:IShopService_OrderUpdated_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="OrderCompleted">
+      <wsdl:output wsaw:Action="http://tempuri.org/IShopService/OrderCompleted" message="tns:IShopService_OrderCompleted_OutputCallbackMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="WSDualHttpBinding_IShopService" type="tns:IShopService">
@@ -155,6 +167,18 @@
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="OrderUpdated">
+      <soap12:operation soapAction="http://tempuri.org/IShopService/OrderUpdated" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="OrderCompleted">
+      <soap12:operation soapAction="http://tempuri.org/IShopService/OrderCompleted" style="document" />
       <wsdl:output>
         <soap12:body use="literal" />
       </wsdl:output>
