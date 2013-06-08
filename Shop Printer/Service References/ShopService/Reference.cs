@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Shop_GUI.ShopService {
+namespace Shop_Printer.ShopService {
     using System.Runtime.Serialization;
     using System;
     
@@ -44,10 +44,10 @@ namespace Shop_GUI.ShopService {
         private int quantField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private Shop_GUI.ShopService.OrderState stateField;
+        private Shop_Printer.ShopService.OrderState stateField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private Shop_GUI.ShopService.Title titleField;
+        private Shop_Printer.ShopService.Title titleField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -151,7 +151,7 @@ namespace Shop_GUI.ShopService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public Shop_GUI.ShopService.OrderState state {
+        public Shop_Printer.ShopService.OrderState state {
             get {
                 return this.stateField;
             }
@@ -164,7 +164,7 @@ namespace Shop_GUI.ShopService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public Shop_GUI.ShopService.Title title {
+        public Shop_Printer.ShopService.Title title {
             get {
                 return this.titleField;
             }
@@ -225,34 +225,34 @@ namespace Shop_GUI.ShopService {
     public interface IShopService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IShopService/getOrders", ReplyAction="http://tempuri.org/IShopService/getOrdersResponse")]
-        System.Collections.Generic.List<Shop_GUI.ShopService.Order> getOrders();
+        Shop_Printer.ShopService.Order[] getOrders();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IShopService/getOrders", ReplyAction="http://tempuri.org/IShopService/getOrdersResponse")]
-        System.Threading.Tasks.Task<System.Collections.Generic.List<Shop_GUI.ShopService.Order>> getOrdersAsync();
+        System.Threading.Tasks.Task<Shop_Printer.ShopService.Order[]> getOrdersAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IShopService/getStocks", ReplyAction="http://tempuri.org/IShopService/getStocksResponse")]
-        System.Collections.Generic.Dictionary<Shop_GUI.ShopService.Title, int> getStocks();
+        System.Collections.Generic.Dictionary<Shop_Printer.ShopService.Title, int> getStocks();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IShopService/getStocks", ReplyAction="http://tempuri.org/IShopService/getStocksResponse")]
-        System.Threading.Tasks.Task<System.Collections.Generic.Dictionary<Shop_GUI.ShopService.Title, int>> getStocksAsync();
+        System.Threading.Tasks.Task<System.Collections.Generic.Dictionary<Shop_Printer.ShopService.Title, int>> getStocksAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IShopService/addOrder", ReplyAction="http://tempuri.org/IShopService/addOrderResponse")]
-        void addOrder(string name, string addr, string email, int quant, Shop_GUI.ShopService.Title t);
+        void addOrder(string name, string addr, string email, int quant, Shop_Printer.ShopService.Title t);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IShopService/addOrder", ReplyAction="http://tempuri.org/IShopService/addOrderResponse")]
-        System.Threading.Tasks.Task addOrderAsync(string name, string addr, string email, int quant, Shop_GUI.ShopService.Title t);
+        System.Threading.Tasks.Task addOrderAsync(string name, string addr, string email, int quant, Shop_Printer.ShopService.Title t);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IShopService/warehouseDispatch", ReplyAction="http://tempuri.org/IShopService/warehouseDispatchResponse")]
-        void warehouseDispatch(Shop_GUI.ShopService.Title t, System.DateTime date);
+        void warehouseDispatch(Shop_Printer.ShopService.Title t, System.DateTime date);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IShopService/warehouseDispatch", ReplyAction="http://tempuri.org/IShopService/warehouseDispatchResponse")]
-        System.Threading.Tasks.Task warehouseDispatchAsync(Shop_GUI.ShopService.Title t, System.DateTime date);
+        System.Threading.Tasks.Task warehouseDispatchAsync(Shop_Printer.ShopService.Title t, System.DateTime date);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IShopService/orderArrived", ReplyAction="http://tempuri.org/IShopService/orderArrivedResponse")]
-        void orderArrived(Shop_GUI.ShopService.Title t, int quant);
+        void orderArrived(Shop_Printer.ShopService.Title t, int quant);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IShopService/orderArrived", ReplyAction="http://tempuri.org/IShopService/orderArrivedResponse")]
-        System.Threading.Tasks.Task orderArrivedAsync(Shop_GUI.ShopService.Title t, int quant);
+        System.Threading.Tasks.Task orderArrivedAsync(Shop_Printer.ShopService.Title t, int quant);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IShopService/Subscribe", ReplyAction="http://tempuri.org/IShopService/SubscribeResponse")]
         void Subscribe();
@@ -268,12 +268,12 @@ namespace Shop_GUI.ShopService {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface IShopServiceChannel : Shop_GUI.ShopService.IShopService, System.ServiceModel.IClientChannel {
+    public interface IShopServiceChannel : Shop_Printer.ShopService.IShopService, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class ShopServiceClient : System.ServiceModel.ClientBase<Shop_GUI.ShopService.IShopService>, Shop_GUI.ShopService.IShopService {
+    public partial class ShopServiceClient : System.ServiceModel.ClientBase<Shop_Printer.ShopService.IShopService>, Shop_Printer.ShopService.IShopService {
         
         public ShopServiceClient() {
         }
@@ -294,43 +294,43 @@ namespace Shop_GUI.ShopService {
                 base(binding, remoteAddress) {
         }
         
-        public System.Collections.Generic.List<Shop_GUI.ShopService.Order> getOrders() {
+        public Shop_Printer.ShopService.Order[] getOrders() {
             return base.Channel.getOrders();
         }
         
-        public System.Threading.Tasks.Task<System.Collections.Generic.List<Shop_GUI.ShopService.Order>> getOrdersAsync() {
+        public System.Threading.Tasks.Task<Shop_Printer.ShopService.Order[]> getOrdersAsync() {
             return base.Channel.getOrdersAsync();
         }
         
-        public System.Collections.Generic.Dictionary<Shop_GUI.ShopService.Title, int> getStocks() {
+        public System.Collections.Generic.Dictionary<Shop_Printer.ShopService.Title, int> getStocks() {
             return base.Channel.getStocks();
         }
         
-        public System.Threading.Tasks.Task<System.Collections.Generic.Dictionary<Shop_GUI.ShopService.Title, int>> getStocksAsync() {
+        public System.Threading.Tasks.Task<System.Collections.Generic.Dictionary<Shop_Printer.ShopService.Title, int>> getStocksAsync() {
             return base.Channel.getStocksAsync();
         }
         
-        public void addOrder(string name, string addr, string email, int quant, Shop_GUI.ShopService.Title t) {
+        public void addOrder(string name, string addr, string email, int quant, Shop_Printer.ShopService.Title t) {
             base.Channel.addOrder(name, addr, email, quant, t);
         }
         
-        public System.Threading.Tasks.Task addOrderAsync(string name, string addr, string email, int quant, Shop_GUI.ShopService.Title t) {
+        public System.Threading.Tasks.Task addOrderAsync(string name, string addr, string email, int quant, Shop_Printer.ShopService.Title t) {
             return base.Channel.addOrderAsync(name, addr, email, quant, t);
         }
         
-        public void warehouseDispatch(Shop_GUI.ShopService.Title t, System.DateTime date) {
+        public void warehouseDispatch(Shop_Printer.ShopService.Title t, System.DateTime date) {
             base.Channel.warehouseDispatch(t, date);
         }
         
-        public System.Threading.Tasks.Task warehouseDispatchAsync(Shop_GUI.ShopService.Title t, System.DateTime date) {
+        public System.Threading.Tasks.Task warehouseDispatchAsync(Shop_Printer.ShopService.Title t, System.DateTime date) {
             return base.Channel.warehouseDispatchAsync(t, date);
         }
         
-        public void orderArrived(Shop_GUI.ShopService.Title t, int quant) {
+        public void orderArrived(Shop_Printer.ShopService.Title t, int quant) {
             base.Channel.orderArrived(t, quant);
         }
         
-        public System.Threading.Tasks.Task orderArrivedAsync(Shop_GUI.ShopService.Title t, int quant) {
+        public System.Threading.Tasks.Task orderArrivedAsync(Shop_Printer.ShopService.Title t, int quant) {
             return base.Channel.orderArrivedAsync(t, quant);
         }
         

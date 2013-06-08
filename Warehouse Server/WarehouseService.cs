@@ -44,7 +44,7 @@ namespace Warehouse_Server
             }
         }
 
-        class Obj { public Title t; public int quant;} ;
+        public class Obj { public Title t; public int quant;} ;
         public Dictionary<Title, int> getShopRequests()
         {
             msq.Path = ".\\private$\\tdin";

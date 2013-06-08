@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="da8ddb82-bb2d-4f30-888b-94296abe350b" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:8700/ShopService/mex" Protocol="mex" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="service.wsdl" MetadataType="Wsdl" ID="cbdb55f4-66f0-475b-b624-5a4a3f929f8f" SourceId="1" SourceUrl="http://localhost:8700/ShopService/mex" />
+    <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="abbe6230-b8ba-46bf-bf84-7a9b7de369d3" SourceId="1" SourceUrl="http://localhost:8700/ShopService/mex" />
+    <MetadataFile FileName="service1.xsd" MetadataType="Schema" ID="147bef86-d0d7-4527-9c35-046ca120f6eb" SourceId="1" SourceUrl="http://localhost:8700/ShopService/mex" />
+    <MetadataFile FileName="Shop_Server.xsd" MetadataType="Schema" ID="e135b951-8e14-480a-be58-8575792b7fdc" SourceId="1" SourceUrl="http://localhost:8700/ShopService/mex" />
+    <MetadataFile FileName="Arrays.xsd" MetadataType="Schema" ID="5dffa346-7ab4-4287-82f0-e33a1d84d00f" SourceId="1" SourceUrl="http://localhost:8700/ShopService/mex" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>
