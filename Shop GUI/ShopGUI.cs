@@ -29,7 +29,7 @@ namespace Shop_GUI
 
         private void button2_Click(object sender, EventArgs e)
         {
-            List<Order> orders=proxy.getOrders();
+            /*List<Order> orders=proxy.getOrders();
             Orders.Items.Clear();
             foreach(Order order in orders)
             {
@@ -41,7 +41,28 @@ namespace Shop_GUI
             foreach (Title t in stocks.Keys)
             {
                 Stock.Items.Add(Enum.GetName(typeof(Title),t)+" "+stocks[t]);
+            }*/
+
+
+            AddOrder add_form = new AddOrder();
+
+            if (add_form.ShowDialog(this) == DialogResult.OK)
+            {
+                proxy.addOrder(add_form.client_name, add_form.client_add, add_form.email, add_form.quantity, add_form.book);
+                
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+            UpdateStock up_form = new UpdateStock();
+
+            if (up_form.ShowDialog(this) == DialogResult.OK)
+            {
+                proxy.orderArrived(up_form.book, up_form.quantity);
+            }
+
         }
     }
 }

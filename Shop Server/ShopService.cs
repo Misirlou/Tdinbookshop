@@ -93,6 +93,7 @@ namespace Shop_Server
             return stocks;
         }
 
+      
 
 
         public void addOrder(string name, string addr, string email, int quant, Title t)
