@@ -56,11 +56,11 @@ namespace Warehouse_Server
                 int quant;
                 if (requests.TryGetValue(obj.t, out quant))
                 {
-                    requests[obj.t] += quant;
+                    requests[obj.t] += obj.quant;
                 }
                 else
                 {
-                    requests.Add(obj.t, quant);
+                    requests.Add(obj.t, obj.quant);
                 }
 
             }
