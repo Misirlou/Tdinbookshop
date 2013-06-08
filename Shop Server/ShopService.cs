@@ -15,7 +15,7 @@ using System.Messaging;
 namespace Shop_Server
 {
     // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "ShopService" in both code and config file together.
-    [ServiceBehavior(InstanceContextMode = InstanceContextMode.Single,ConcurrencyMode=ConcurrencyMode.Reentrant)]
+    [ServiceBehavior(InstanceContextMode = InstanceContextMode.Single)]
     public class ShopService : IShopService
     {
         List<Order> orders;
@@ -237,7 +237,7 @@ namespace Shop_Server
             subscribers.ForEach(delegate(ICallback callback)
             {
                 if (((ICommunicationObject)callback).State == CommunicationState.Opened)
-                    callback.OrderUpdated();
+                    callback.OrderUpdated(getOrders(),getStocks());
                 else
                     subscribers.Remove(callback);
             });

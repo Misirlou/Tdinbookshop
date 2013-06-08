@@ -48,10 +48,19 @@ namespace Shop_GUI
             }
         }
 
-        public void OrderUpdated()
+        public void OrderUpdated(List<Order> orders, Dictionary<Title, int> stocks)
         {
-            proxy.getStocks();
-            proxy.getOrders();
+            Orders.Items.Clear();
+            foreach (Order order in orders)
+            {
+                Orders.Items.Add(order.id + " " + Enum.GetName(typeof(Title), order.title) + " " + order.quant);
+            }
+
+            Stock.Items.Clear();
+            foreach (Title t in stocks.Keys)
+            {
+                Stock.Items.Add(Enum.GetName(typeof(Title), t) + " " + stocks[t]);
+            }
         }
 
         public void OrderCompleted(Order o)

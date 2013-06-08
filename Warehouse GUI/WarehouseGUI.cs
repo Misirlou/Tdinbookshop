@@ -61,12 +61,14 @@ namespace Warehouse_GUI
 
 
 
-        public void OrderUpdated()
+       
+
+        void IShopServiceCallback.OrderUpdated(List<Order> orders, Dictionary<ShopService.Title, int> stocks)
         {
             return;
         }
 
-        public void OrderCompleted(Order o)
+        void IShopServiceCallback.OrderCompleted(Order o)
         {
             return;
         }

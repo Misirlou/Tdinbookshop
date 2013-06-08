@@ -271,7 +271,7 @@ namespace Shop_Printer.ShopService {
     public interface IShopServiceCallback {
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IShopService/OrderUpdated")]
-        void OrderUpdated();
+        void OrderUpdated(Shop_Printer.ShopService.Order[] orders, System.Collections.Generic.Dictionary<Shop_Printer.ShopService.Title, int> stocks);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IShopService/OrderCompleted")]
         void OrderCompleted(Shop_Printer.ShopService.Order o);

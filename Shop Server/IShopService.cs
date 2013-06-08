@@ -80,7 +80,7 @@ namespace Shop_Server
     public interface ICallback
     {
         [OperationContract(IsOneWay = true)]
-        void OrderUpdated();
+        void OrderUpdated(List<Order> orders, Dictionary<Title, int> stocks);
         [OperationContract(IsOneWay = true)]
         void OrderCompleted(Order o);
     }
